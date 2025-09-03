@@ -1,0 +1,36 @@
+print("Bem-Vindo ao PedroBank!!")
+
+saldo = int(input("Digite o valor que vc possui: "))
+
+print('''[d] depositar
+[s] sacar
+[e] extrato
+[q] sair''')
+
+comando = input("qual opção vc deseja? ")
+
+if comando == "d":
+    deposito = int(input("qual valor vc deseja depositar ? "))
+    saldo = saldo + deposito
+    print(f"seu saldo é de {saldo}")
+
+elif comando == "s":
+    sacar = int(input("quanto deseja retirar?  "))
+    if sacar <= 500 and sacar <= saldo:   # 👈 limite de saque e saldo
+        saldo = saldo - sacar
+        print(f"seu saldo atual é de {saldo}")
+    elif sacar > 500:
+        print("Você bateu o limite máximo de saque (500 por vez)")
+    else:
+        print("Saldo insuficiente!")
+
+elif comando == "e":
+    print(f'''========= EXTRATO =========
+Seu saldo é de {saldo}''')
+
+elif comando == "q":
+    print("Tchau, até logo!")
+    exit()
+
+else:
+    print("Opção inválida!")
