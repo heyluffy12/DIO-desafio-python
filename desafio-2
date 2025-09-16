@@ -1,0 +1,74 @@
+from datetime import datetime , date ,timedelta
+data = datetime.now()
+
+print("Bem-Vindo ao PedroBank!!")
+saldo = int(input("Digite o valor que vc possui: "))
+
+
+def depositar (saldo, deposito ):
+   saldo += deposito   
+   print(f"Depósito de R${deposito:.2f} realizado! Saldo atual: R${saldo:.2f}")
+   return saldo
+
+def extrato (saldo ):
+   print(f'''
+ ========= EXTRATO =========
+ Seu saldo é de {saldo} e esta sendo visto as {data.strftime('%H:%M %d/%m/%y')}
+ ''')
+
+def saque (saldo  ,sacar):
+   
+   if sacar <= 0 :
+      print("valor invalido")
+      return saldo
+   if sacar >= 500 :
+      print("está acima do valor maxímo(limite de 500)")
+      return saldo
+   if saldo <= sacar :            
+      print("saldo insuficiente!")
+      return saldo
+   
+   saldo -= sacar
+   print(f"seu saldo atual é de {saldo}")
+   print(f"e foi feito as {data.strftime('%H:%M %d/%m/%y')}")
+
+
+   return
+
+      
+while True:
+
+
+ print('''
+[d] depositar
+[s] sacar
+[e] extrato
+[q] sair
+''')
+ comando = input("qual opção vc deseja? ")
+
+ 
+ if comando == "e":
+      extrato(saldo)
+
+ if comando == "d":
+       deposito = int(input("qual valor vc deseja depositar ? "))
+       saldo = depositar(saldo,deposito)
+        
+
+ elif comando == "s":
+       sacar = int(input("quanto deseja retirar?  "))
+       saldo = saque(saldo ,sacar)
+
+ elif comando == "q":
+       print("Tchau, até logo!")
+       break
+ 
+ else:
+       print("Opção inválida!")        
+
+
+
+
+
+
